@@ -67,6 +67,7 @@ input#loc {
   border: 0;
   border-bottom: 0.2rem solid #1F3855;
   border-radius: .25rem;
+  font-family: 'Lato', sans-serif;
 }
 
 input#loc::placeholder {
@@ -77,3 +78,27 @@ input#loc::placeholder {
 input#loc:focus {
   outline: none;
 }
+
+.empty-bar {
+  height: 3rem;
+  background-color: #1F3855;
+}
+
+.info-bar {
+  padding: 0;
+  margin: 0;
+  height: 3rem;
+  background-color: #1F3855;
+  list-style: none;
+  color: #ECECE7;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3rem;
+}
+
+.info-bar > p {
+  position: relative;
+  margin: auto;
+  padding: 0;
+}
+
+

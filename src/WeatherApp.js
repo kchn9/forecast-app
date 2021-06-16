@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { LocationForm } from './LocationForm'
+import { BasicInfo } from './BasicInfo'
+
+import OpenWeather from './utils/OpenWeather';
 
 import logo from './sun.png'
 
@@ -10,10 +13,31 @@ export const WeatherApp = () => {
         setLocation(target.value);
     }
 
+    const [currentWeather, setCurrent] = useState({});
+    const [hourlyWeather, setHourly] = useState([]);
+    const [dailyWeather, setDaily] = useState([]);
+    const [info, setInfo] = useState({});
+
     const onSubmit = (e) => {
         e.preventDefault();
-        setLocation('');
+        OpenWeather.fetchWeather(location)
+        .then((respond) => {
+            const { current, hourly, daily, ...info } = respond;
+            info.location = location;
+            setCurrent(current);
+            setHourly(hourly);
+            setDaily(daily);
+            setInfo(info);
+        })
+        .catch((error) => {
+            //info
+            console.log(error);
+        })
+        .finally(() => {
+            setLocation('');
+        })
     }
+
 
     return (
     <div className="forecast-app">
@@ -24,9 +48,16 @@ export const WeatherApp = () => {
             </h1>
         </header>
         <LocationForm
-                location={location}
-                onChange={onChange}
-                onSubmit={onSubmit}
+            location={location}
+            onChange={onChange}
+            onSubmit={onSubmit}
+        />
+        <BasicInfo
+            location={info.location}
+            lat={info.lat}
+            lon={info.lon}
+            timezone={info.timezone}
+            timezoneOff={info.timezone_offset}
         />
     </div>
     )
