@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { LocationForm } from './LocationForm'
 
+import logo from './sun.png'
+
 export const WeatherApp = () => {
 
     const [location, setLocation] = useState('');
@@ -13,12 +15,19 @@ export const WeatherApp = () => {
         setLocation('');
     }
 
-    return <div className="forecast-app">
-        <h1>{location}</h1>
+    return (
+    <div className="forecast-app">
+        <header>
+            <h1 className="app-title">
+                sosunny
+                <img src={logo} alt="Sun logo"></img>
+            </h1>
+        </header>
         <LocationForm
-            location={location}
-            onChange={onChange}
-            onSubmit={onSubmit}
+                location={location}
+                onChange={onChange}
+                onSubmit={onSubmit}
         />
     </div>
+    )
 }
