@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LocationForm } from './LocationForm'
 import { BasicInfo } from './BasicInfo'
+import { WeatherDisplay } from './WeatherDisplay';
 
 import OpenWeather from './utils/OpenWeather';
 
@@ -57,6 +58,11 @@ export const WeatherApp = () => {
             longitude={info.lon}
             timezone={info.timezone}
             timezoneOff={info.timezone_offset}
+        />
+        <WeatherDisplay
+            currentWeather={currentWeather}
+            hourlyWeather={hourlyWeather}
+            dailyWeather={dailyWeather}
         />
     </div>
     )

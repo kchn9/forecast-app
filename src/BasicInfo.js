@@ -4,6 +4,10 @@ import { LocationInfo } from './LocationInfo';
 import { TimeInfo } from './TimeInfo';
 
 const style = {
+    position: 'sticky',
+    top: '0',
+    zIndex: '-1',
+    width: '100%',
     padding: '0 3rem',
     margin: 0,
     backgroundColor: '#1F3855',
