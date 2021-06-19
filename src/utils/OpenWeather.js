@@ -8,14 +8,18 @@ export const OpenWeather = {
         })
         .then(jsonRespond => {
             const {coord} = jsonRespond;
-            const {lon, lat} = coord;
-            return fetch(`//api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${key}`)
-            .then(respond => {
-                return respond.json()
-            })
+            if (coord) {
+                const {lon, lat} = coord;
+                return fetch(`//api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${key}`)
+                .then(respond => {
+                    return respond.json()
+                })
+            } else {
+                throw ReferenceError("No coords found, unable to find the location.");
+            }
         })
-        .catch(error => {
-            console.log('City not found')
+        .catch((e) => {
+            console.error("ERROR CAUGHT: " + e)
         })
     }
 }

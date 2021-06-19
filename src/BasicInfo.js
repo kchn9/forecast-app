@@ -19,6 +19,7 @@ const style = {
 }
 
 export const BasicInfo = ({
+    error,
     location,
     latitude,
     longitude,
@@ -32,14 +33,14 @@ export const BasicInfo = ({
         return beautyWords.join(' ');
     }
 
-    /*     // props validation
-        const keys = Object.keys(props);
-        const propsValues = keys.map(key => props[key]);
-        const predicate = (val) => val === undefined;
+    if (error) {
+        return (
+            <div style={{...style, fontSize: '.9rem', fontStyle:'normal' }}>
+                <h2>No weather forecast has been found for this location.</h2>
+            </div>
+        )
 
-        if (propsValues.every(predicate)) {
-            return <div className="empty-bar"></div>
-        }*/
+    }
 
     return (
         <div style={style}>
