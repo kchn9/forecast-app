@@ -26,6 +26,10 @@ header {
   align-items: center;
 }
 
+header a {
+  text-decoration: none;
+}
+
 .app-title {
   bottom: 5px;
   position: relative;
@@ -79,26 +83,41 @@ input#loc:focus {
   outline: none;
 }
 
-.empty-bar {
-  height: 3rem;
-  background-color: #1F3855;
+.info-location {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  font-size: 1.5rem;
+  padding-top: 0.4rem;
 }
 
-.info-bar {
-  padding: 0;
+.info-location > img {
+  height: 3rem;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.small-info {
+  display: none;
   margin: 0;
-  height: 3rem;
-  background-color: #1F3855;
-  list-style: none;
-  color: #ECECE7;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.3rem;
+  font-size: 0.7rem;
+  justify-content: space-between;
 }
 
-.info-bar > p {
+.time {
   position: relative;
-  margin: auto;
-  padding: 0;
+  margin: 0;
+  font-size: 1.7rem;
 }
+
+.time > img {
+  height: 3rem;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
 
 

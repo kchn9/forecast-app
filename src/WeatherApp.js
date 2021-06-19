@@ -30,7 +30,6 @@ export const WeatherApp = () => {
             setInfo(info);
         })
         .catch((error) => {
-            //info
             console.log(error);
         })
         .finally(() => {
@@ -42,10 +41,10 @@ export const WeatherApp = () => {
     return (
     <div className="forecast-app">
         <header>
-            <h1 className="app-title">
+            <a href="/"><h1 className="app-title">
                 sosunny
                 <img src={logo} alt="Sun logo"></img>
-            </h1>
+            </h1></a>
         </header>
         <LocationForm
             location={location}
@@ -54,8 +53,8 @@ export const WeatherApp = () => {
         />
         <BasicInfo
             location={info.location}
-            lat={info.lat}
-            lon={info.lon}
+            latitude={info.lat}
+            longitude={info.lon}
             timezone={info.timezone}
             timezoneOff={info.timezone_offset}
         />

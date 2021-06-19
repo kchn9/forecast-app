@@ -1,23 +1,51 @@
-export const BasicInfo = (props) => {
+import lodash from 'lodash';
 
-    const keys = Object.keys(props);
-    const propsValues = keys.map(key => props[key]);
-    const predicate = (val) => val === undefined;
+import { LocationInfo } from './LocationInfo';
+import { TimeInfo } from './TimeInfo';
 
-    if (propsValues.every(predicate)) {
-        return <div className="empty-bar"></div>
+const style = {
+    padding: '0 3rem',
+    margin: 0,
+    backgroundColor: '#1F3855',
+    listStyle: 'none',
+    color: '#ECECE7',
+    fontFamily: ['Lato', 'sans-serif'],
+    fontSize: '1.1rem',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+}
+
+export const BasicInfo = ({
+    location,
+    latitude,
+    longitude,
+    timezone,
+    timezoneOff
+}) => {
+
+    const beautifyLocation = (location) => {
+        const locationWords = location.split(' ');
+        const beautyWords = locationWords.map(word => lodash.capitalize(word));
+        return beautyWords.join(' ');
     }
 
-    const now = new Date();
-    // get actual date and calculate diff to get UTC
-    const diff = now.getTime() + Math.floor(now.getTimezoneOffset() * 60 * 1000);
-    const diff_2 = Math.floor(props.timezoneOff * 1000);
-    // now add offset to get official time
-    const utcDate = new Date(diff + diff_2);
+    /*     // props validation
+        const keys = Object.keys(props);
+        const propsValues = keys.map(key => props[key]);
+        const predicate = (val) => val === undefined;
+
+        if (propsValues.every(predicate)) {
+            return <div className="empty-bar"></div>
+        }*/
 
     return (
-        <div className="info-bar">
-            <p className="info-location">Now in {props.location} [lon: {props.lon}, lat: {props.lat}] at {utcDate.toLocaleTimeString()} [{props.timezone}]</p>
+        <div style={style}>
+            {location && <h2 style={{ fontSize: '2.5rem', padding: 0}}>Now in {beautifyLocation(location)}</h2>}
+            {[latitude, longitude].every(val => val) && <LocationInfo latitude={latitude} longitude={longitude} />}
+            {[timezone, timezoneOff].every(val => val) && <TimeInfo timezone={timezone} timezoneOff={timezoneOff} />}
         </div>
     )
 }
