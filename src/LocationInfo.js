@@ -6,7 +6,6 @@ const style = {
     justifyContent: 'space-between',
     alignItems: 'center',
     flexWrap: 'nowrap',
-    padding: '.5rem 0',
 }
 
 const pStyle = {

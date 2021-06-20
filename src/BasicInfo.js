@@ -8,7 +8,6 @@ const style = {
     top: '0',
     zIndex: '-1',
     width: '100%',
-    padding: '0 3rem',
     margin: 0,
     backgroundColor: '#1F3855',
     listStyle: 'none',
@@ -19,7 +18,8 @@ const style = {
     flexDirection: 'row',
     flexWrap: 'nowrap',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    padding: '0.5rem 0'
 }
 
 export const BasicInfo = ({
@@ -48,7 +48,7 @@ export const BasicInfo = ({
 
     return (
         <div style={style}>
-            {location && <h2 style={{ fontSize: '2.5rem', padding: 0}}>Now in {beautifyLocation(location)}</h2>}
+            {location && <h2 style={{ fontSize: '2.7rem', padding: '0', margin: '1rem 0'}}>Now in {beautifyLocation(location)}</h2>}
             {[latitude, longitude].every(val => val) && <LocationInfo latitude={latitude} longitude={longitude} />}
             {[timezone, timezoneOff].every(val => val) && <TimeInfo timezone={timezone} timezoneOff={timezoneOff} />}
         </div>

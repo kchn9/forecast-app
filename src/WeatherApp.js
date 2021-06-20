@@ -14,6 +14,8 @@ export const WeatherApp = () => {
         setLocation(target.value);
     }
 
+    const [error, setError] = useState(false);
+
     const [currentWeather, setCurrent] = useState({});
     const [hourlyWeather, setHourly] = useState([]);
     const [dailyWeather, setDaily] = useState([]);
@@ -21,8 +23,10 @@ export const WeatherApp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (!location) return;
         OpenWeather.fetchWeather(location)
         .then((respond) => {
+            setError(false);
             const { current, hourly, daily, ...info } = respond;
             info.location = location;
             setCurrent(current);
@@ -30,8 +34,12 @@ export const WeatherApp = () => {
             setDaily(daily);
             setInfo(info);
         })
-        .catch((error) => {
-            console.log(error);
+        .catch(() => {
+            setError(true);
+            setInfo({});
+            setCurrent({});
+            setHourly([]);
+            setDaily([]);
         })
         .finally(() => {
             setLocation('');
@@ -53,6 +61,7 @@ export const WeatherApp = () => {
             onSubmit={onSubmit}
         />
         <BasicInfo
+            error={error}
             location={info.location}
             latitude={info.lat}
             longitude={info.lon}

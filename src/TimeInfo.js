@@ -7,8 +7,7 @@ const style = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'nowrap',
-    padding: '.5rem 0'
+    flexWrap: 'nowrap'
 }
 
 const pStyle = {
@@ -47,7 +46,7 @@ export const TimeInfo = ({
         <div style={style}>
             <img style={{ height: '5rem', width: 'auto', padding: 0, marginRight: '0.5rem' }} src={clockImg} alt="Map symbol" />
             <div>
-                {utcTime && <p style={{ ...pStyle, fontSize: '1.4rem' }}>Time: {utcTime.toLocaleTimeString()}</p>}
+                {utcTime && <p style={{ ...pStyle, fontSize: '1.4rem' }}>Time: {utcTime.toLocaleTimeString()} <span style={{fontSize: '1rem'}}> / {utcTime.toLocaleDateString()}</span> </p>}
                 <p style={pStyle}>Timezone: {timezone}</p>
                 <p style={pStyle}>UTC Offset: {beautifyOffset(timezoneOff)}</p>
             </div>

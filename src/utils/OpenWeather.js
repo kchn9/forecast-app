@@ -10,7 +10,7 @@ export const OpenWeather = {
             const {coord} = jsonRespond;
             if (coord) {
                 const {lon, lat} = coord;
-                return fetch(`//api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${key}`)
+                return fetch(`//api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${key}&units=metric`)
                 .then(respond => {
                     return respond.json()
                 })
@@ -21,6 +21,10 @@ export const OpenWeather = {
         .catch((e) => {
             console.error("ERROR CAUGHT: " + e)
         })
+    },
+
+    generateIconURL(iconId) {
+        return `http://openweathermap.org/img/wn/${iconId}@2x.png`;
     }
 }
 
