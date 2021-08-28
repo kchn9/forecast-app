@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { ForecastHeader } from './ForecastHeader.js';
 import { ForecastImage } from './ForecastImage.js';
 import { ForecastDetails } from './ForecastDetails.js';
+import { ForecastHourly } from './ForecastHourly.js';
 
 export const ForecastViewer = ({
     daily,
-    hourly
+    hourly,
+    off
 }) => {
 
     const [weekday, setWeekday] = useState(0);
@@ -46,6 +48,9 @@ export const ForecastViewer = ({
             />
             <ForecastDetails
                 general={daily[weekday]}
+                off={off}
+            />
+            <ForecastHourly
                 hourly={getHourly()}
             />
             <button onClick={goPrev}>{"<"}</button>

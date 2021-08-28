@@ -68,6 +68,7 @@ export const WeatherApp = () => {
         <ForecastViewer
             daily={dailyWeather}
             hourly={hourlyWeather}
+            off={info.timezone_offset}
         />
     </div>
     )
