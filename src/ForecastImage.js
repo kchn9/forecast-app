@@ -1,6 +1,6 @@
 import OpenWeather from "./utils/OpenWeather";
 
-export const WeatherImage = ({
+export const ForecastImage = ({
     iconId
 }) => {
 

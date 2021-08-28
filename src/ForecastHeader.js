@@ -1,5 +1,4 @@
-export const WeatherDescription = ({
-    type, // will be used in the nearest future
+export const ForecastHeader = ({
     data
 }) => {
 
@@ -30,9 +29,11 @@ export const WeatherDescription = ({
     }
 
     return (
-        <p style={{ display: "inline-block"}}>
-            {getWeekday(data.dt)} / {getDate(data.dt)} <br/>
-            {Math.round(data.temp.day)}&deg;C / {Math.round(data.temp.night)}&deg;C
+        <p style={{ display: "inline-block", position: "relative", width: "100%", color: '#000', marginTop: '.8rem' }}>
+            <span style={{fontSize: "1.1rem"}}>{getWeekday(data.dt)}</span>
+            <span style={{display: "block", fontSize: "1.2rem", position: "absolute", right: "1rem", top: "0%"}}>{getDate(data.dt)}</span>
+            <br/>
+            <span style={{fontSize: "1.1rem"}}>{Math.round(data.temp.day)}&deg;C</span> / {Math.round(data.temp.night)}&deg;C
         </p>
     )
 }
