@@ -69,6 +69,7 @@ export const WeatherApp = () => {
             daily={dailyWeather}
             hourly={hourlyWeather}
             off={info.timezone_offset}
+            hourSkip={2}
         />
     </div>
     )
