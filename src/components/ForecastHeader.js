@@ -32,11 +32,11 @@ export const ForecastHeader = ({
     }
 
     return (
-        <h4 style={{ display: "inline-block", position: "relative", width: "100%", color: '#000', marginTop: '.8rem' }}>
-            <span style={{fontSize: "1.1rem"}}>{getWeekday(data.dt)}</span>
-            <span style={{display: "block", fontSize: "1.2rem", position: "absolute", right: "1rem", top: "0%"}}>{getDate(data.dt)}</span>
+        <h4>
+            <span>{getWeekday(data.dt)}</span>
+            <span>{getDate(data.dt)}</span>
             <br/>
-            <span style={{fontSize: "1.1rem"}}>{Math.round(data.temp.day)}&deg;C</span> / {Math.round(data.temp.night)}&deg;C
+            <span>{Math.round(data.temp.day)}&deg;C</span> / {Math.round(data.temp.night)}&deg;C
             <legend>{data.weather[0].description}</legend>
         </h4>
     )
