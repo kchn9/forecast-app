@@ -1,20 +1,5 @@
-import clockImg from './icons8-clock-200.png';
-
+import clockImg from '../assets/icons8-clock-200.png'
 import { useState, useEffect } from 'react';
-
-const style = {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'nowrap'
-}
-
-const pStyle = {
-    fontSize: '1.1rem',
-    margin: 0,
-    padding: 0,
-}
 
 export const TimeInfo = ({
     timezone,
@@ -43,12 +28,12 @@ export const TimeInfo = ({
     }
 
     return (
-        <div style={style}>
-            <img style={{ height: '5rem', width: 'auto', padding: 0, marginRight: '0.5rem' }} src={clockImg} alt="Map symbol" />
+        <div className="info-group">
+            <img src={clockImg} alt="Map symbol" />
             <div>
-                {utcTime && <p style={{ ...pStyle, fontSize: '1.4rem' }}>Time: {utcTime.toLocaleTimeString()} <span style={{fontSize: '1rem'}}> / {utcTime.toLocaleDateString()}</span> </p>}
-                <p style={pStyle}>Timezone: {timezone.replace("_", " ")}</p>
-                <p style={pStyle}>UTC Offset: {beautifyOffset(timezoneOff)}</p>
+                {utcTime && <p className="time">Time: {utcTime.toLocaleTimeString()} <span style={ {fontSize: "1rem"} }> / {utcTime.toLocaleDateString()}</span> </p>}
+                <p className="time details">Timezone: {timezone.replace("_", " ")}</p>
+                <p className="time details">UTC Offset: {beautifyOffset(timezoneOff)}</p>
             </div>
         </div>
     )

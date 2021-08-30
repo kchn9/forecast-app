@@ -1,6 +1,7 @@
 export const ForecastDetails = ({
     general,
-    off
+    off,
+    weekday
 }) => {
 
     // "translates" UTC time to time depending on user locale
@@ -28,6 +29,7 @@ export const ForecastDetails = ({
             <p>Clouds {general.clouds}%</p>
             <p>Humidity {general.humidity}%</p>
             <p>Pressure {general.pressure}HPa</p>
+            {![0, 1].includes(weekday) && <p>Pop probability {general.pop * 100}%</p>}
             <time>Sunrise {translateTime(general.sunrise)}</time>
             <br/>
             <time>Sunset {translateTime(general.sunset)}</time>

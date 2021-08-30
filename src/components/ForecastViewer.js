@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import { ForecastHeader } from './ForecastHeader.js';
-import { ForecastImage } from './ForecastImage.js';
-import { ForecastDetails } from './ForecastDetails.js';
-import { HourlyChart } from './HourlyChart.js';
+import { ForecastHeader, ForecastImage, ForecastDetails, HourlyChart } from '../components';
 
 export const ForecastViewer = ({
     daily,
@@ -79,6 +76,7 @@ export const ForecastViewer = ({
             <ForecastDetails
                 general={daily[weekday]}
                 off={off}
+                weekday={weekday}
             />
             {getHourly().length > 0 &&
                 <HourlyChart

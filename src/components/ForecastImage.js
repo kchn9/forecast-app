@@ -1,4 +1,4 @@
-import OpenWeather from "./utils/OpenWeather";
+import OpenWeather from "../utils/OpenWeather";
 
 export const ForecastImage = ({
     iconId

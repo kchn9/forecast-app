@@ -1,61 +1,28 @@
 import { useState } from 'react';
-import { LocationForm } from './LocationForm'
-import { BasicInfo } from './BasicInfo'
-import { ForecastViewer } from './ForecastViewer';
+import { LocationForm, BasicInfo, ForecastViewer } from './components'
 
-import OpenWeather from './utils/OpenWeather';
-
-import logo from './sun.png'
+import sun from './assets/sun.png';
 
 export const WeatherApp = () => {
 
-    const [location, setLocation] = useState('');
-    const onChange = ({target}) => {
-        setLocation(target.value);
-    }
-
     const [error, setError] = useState(false);
-
     const [hourlyWeather, setHourly] = useState([]);
     const [dailyWeather, setDaily] = useState([]);
     const [info, setInfo] = useState({});
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        if (!location) return;
-        OpenWeather.fetchWeather(location)
-        .then((respond) => {
-            setError(false);
-            const { hourly, daily, ...info } = respond;
-            info.location = location;
-            setHourly(hourly);
-            setDaily(daily);
-            setInfo(info);
-        })
-        .catch(() => {
-            setError(true);
-            setInfo({});
-            setHourly([]);
-            setDaily([]);
-        })
-        .finally(() => {
-            setLocation('');
-        })
-    }
-
 
     return (
     <div className="forecast-app">
         <header>
             <a href="/"><h1 className="app-title">
                 sosunny
-                <img src={logo} alt="Sun logo"></img>
+                <img src={sun} alt="Sun logo"></img>
             </h1></a>
         </header>
         <LocationForm
-            location={location}
-            onChange={onChange}
-            onSubmit={onSubmit}
+            errorSetter={setError}
+            hourlySetter={setHourly}
+            dailySetter={setDaily}
+            infoSetter={setInfo}
         />
         <BasicInfo
             error={error}
@@ -69,7 +36,7 @@ export const WeatherApp = () => {
             daily={dailyWeather}
             hourly={hourlyWeather}
             off={info.timezone_offset}
-            hourSkip={2}
+            hourSkip={3}
         />
     </div>
     )
