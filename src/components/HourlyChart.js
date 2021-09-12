@@ -22,6 +22,7 @@ export const HourlyChart = ({
           pointStyle: 'triangle',
           radius: 3,
           tension: 0.4,
+          color: '#ECECE7',
         },
         {
           yAxisID: 'B',
@@ -31,7 +32,8 @@ export const HourlyChart = ({
           data: rain,
           borderColor: 'rgb(54, 162, 235)',
           borderWidth: 1,
-          skipNull: true
+          skipNull: true,
+          color: '#ECECE7',
         },
         {
           yAxisID: 'B',
@@ -41,7 +43,8 @@ export const HourlyChart = ({
           data: snow,
           borderColor: 'rgb(201, 203, 207)',
           borderWidth: 1,
-          skipNull: true
+          skipNull: true,
+          color: '#ECECE7',
         }
       ]
     };
@@ -51,26 +54,36 @@ export const HourlyChart = ({
         // Elements options apply to all of the options unless overridden in a dataset
         // In this case, we are setting the border of each horizontal bar to be 2px wide
         scales: {
+          x: {
+            color: '#ECECE7',
+            borderColor: '#ECECE7',
+          },
           A: {
             grid: {
-              display: true
+              display: true,
+              color: '#ECECE7',
+              borderColor: '#ECECE7',
+              tickColor: '#ECECE7',
             },
             type: 'linear',
             position: 'left',
             ticks: {
               callback: val => `${val}°C`
-            }
+            },
           },
           B: {
             grid: {
-              display: false
+              display: false,
+              color: '#ECECE7',
+              borderColor: '#ECECE7',
+              tickColor: '#ECECE7',
             },
             type: 'linear',
             position: 'right',
             ticks: {
               callback: val => `${val}mm`
             }
-          }
+          },
         },
         elements: {
           bar: {
@@ -80,7 +93,12 @@ export const HourlyChart = ({
         responsive: true,
         plugins: {
           legend: {
-            display: false
+            display: false,
+            labels: {
+              font: {
+                color: '#ECECE7'
+              }
+            }
           },
           tooltip: {
             callbacks: {
@@ -95,7 +113,7 @@ export const HourlyChart = ({
       };
 
     return (
-      <div style={{width: '800px'}}>
+      <div className="forecast-chart">
         <Bar data={data} options={options}/>
       </div>
     )

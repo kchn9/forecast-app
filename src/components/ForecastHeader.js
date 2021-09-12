@@ -1,5 +1,8 @@
+import { ForecastImage } from "./ForecastImage";
+
 export const ForecastHeader = ({
-    data
+    data,
+    iconId
 }) => {
 
     const getWeekday = dt => {
@@ -26,18 +29,13 @@ export const ForecastHeader = ({
         }
     }
 
-    const getDate = dt => {
-        const date = new Date(dt * 1000);
-        return date.toLocaleDateString();
-    }
-
     return (
-        <h4>
+        <div className="forecast-header">
             <span>{getWeekday(data.dt)}</span>
-            <span>{getDate(data.dt)}</span>
             <br/>
+            <ForecastImage iconId={iconId}/>
             <span>{Math.round(data.temp.day)}&deg;C</span> / {Math.round(data.temp.night)}&deg;C
             <legend>{data.weather[0].description}</legend>
-        </h4>
+        </div>
     )
 }

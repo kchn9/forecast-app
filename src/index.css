@@ -142,7 +142,72 @@ p.details {
   font-size: 1.1rem;
 }
 
-main {
-  margin: 12px 20px;
-  font-size: 1.4rem;
+.viewer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  overflow: hidden;
+  padding-bottom: 25px;
+}
+
+.button {
+  background: none;
+  border: none;
+  background-color: #007CB0;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  color: #ECECE7;
+  font-size: 3rem;
+}
+
+.left {
+  grid-area: 3 / 1 / span 1 / span 1;
+}
+
+.right {
+  grid-area: 3 / 12 / span 1 / span 1;
+}
+
+.forecast-chart {
+  grid-area: 1 / 6 / span 3 / span 6;
+  transform: scale(0.7);
+  padding: 20px;
+  background-color: #1F385540;
+  border-radius: 20px;
+}
+
+.forecast-header {
+  background-color: #1F3855;
+  border-radius: 20px;
+  font-size: 2rem;
+  grid-area: 1 / 2 / span 3 / span 3;
+  text-align: center;
+  padding: 20px;
+  color: #ECECE7;
+}
+
+.forecast-details {
+  background-color: #1F3855;
+  color: #ECECE7;
+  opacity: 0.5;
+  grid-area: 4 / 2 / span 3 / span 4;
+  font-size: 1.3em;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.forecast-details > p {
+  margin: 10px;
+}
+
+.forecast-image {
+  display: block;
+  position: relative;
+  margin: 0 auto;
 }

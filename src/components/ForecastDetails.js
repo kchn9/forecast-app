@@ -25,16 +25,16 @@ export const ForecastDetails = ({
     }
 
     return (
-        <section>
-            <p>Clouds {general.clouds}%</p>
-            <p>Humidity {general.humidity}%</p>
-            <p>Pressure {general.pressure}HPa</p>
-            {![0, 1].includes(weekday) && <p>Pop probability {general.pop * 100}%</p>}
-            <time>Sunrise {translateTime(general.sunrise)}</time>
+        <section className="forecast-details">
+            <p>Clouds - {general.clouds}%</p>
+            <p>Humidity - {general.humidity}%</p>
+            <p>Pressure - {general.pressure}HPa</p>
+            {![0, 1].includes(weekday) && <p>Pop probability - {general.pop * 100}%</p>}
+            <time>Sunrise at {translateTime(general.sunrise)}</time>
             <br/>
-            <time>Sunset {translateTime(general.sunset)}</time>
-            <p>Wind dir {translateWindDeg(general.wind_deg)}</p>
-            <p>Wind speed {general.wind_speed}km/h</p>
+            <time>Sunset at {translateTime(general.sunset)}</time>
+            <p>Wind direction - {translateWindDeg(general.wind_deg)}</p>
+            <p>Wind speed - {general.wind_speed}km/h</p>
         </section>
     )
 }

@@ -66,13 +66,8 @@ export const ForecastViewer = ({
     }
 
     return (
-        <main>
-            <ForecastHeader
-                data={daily[weekday]}
-            />
-            <ForecastImage
-                iconId={daily[weekday].weather[0].icon}
-            />
+        <main className="viewer">
+            <ForecastHeader data={daily[weekday]} iconId={daily[weekday].weather[0].icon} />
             <ForecastDetails
                 general={daily[weekday]}
                 off={off}
@@ -86,8 +81,8 @@ export const ForecastViewer = ({
                     snow={getDataByHour(getHourly(), ["snow", "1h"], hourSkip)}
                 />
             }
-            <button onClick={goPrev}>{"<"}</button>
-            <button onClick={goNext}>{">"}</button>
+            <button className="button left" onClick={goPrev}>{"<"}</button>
+            <button className="button right" onClick={goNext}>{">"}</button>
         </main>
     )
 }

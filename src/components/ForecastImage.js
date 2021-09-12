@@ -9,5 +9,5 @@ export const ForecastImage = ({
     }
     const src = OpenWeather.generateIconURL(iconId);
 
-    return <img src={src} alt="Weather icon" style={{ display: 'inline', height: '4.4rem', width: 'auto', verticalAlign: 'top' }}></img>
+    return <img className="forecast-image" src={src} alt="Weather icon"></img>
 }
